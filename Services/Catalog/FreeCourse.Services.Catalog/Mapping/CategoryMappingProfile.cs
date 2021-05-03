@@ -11,6 +11,7 @@ namespace FreeCourse.Services.Catalog.Mapping
         public CategoryMappingProfile()
         {
             CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CategoryCreateDto>().ReverseMap();
         }
     }
 }

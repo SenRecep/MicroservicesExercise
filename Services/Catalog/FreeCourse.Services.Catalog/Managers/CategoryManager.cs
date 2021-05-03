@@ -38,20 +38,20 @@ namespace FreeCourse.Services.Catalog.Managers
             return Response<IEnumerable<CategoryDto>>.Success(dtoList, StatusCodes.Status200OK);
         }
 
-        public async Task<Response<CategoryDto>> CreateAsync(Category category)
+        public async Task<Response<CategoryDto>> GetByIdAsync(string id)
         {
-            await _categoryCollection.InsertOneAsync(category);
+            var category = await _categoryCollection.Find(category => category.Id == id).FirstOrDefaultAsync();
+            if (category is null) return Response<CategoryDto>.Fail(StatusCodes.Status404NotFound, "Category not found");
             var dto = _mapper.Map<CategoryDto>(category);
-            return Response<CategoryDto>.Success(dto, StatusCodes.Status201Created); 
+            return Response<CategoryDto>.Success(dto, StatusCodes.Status200OK);
         }
 
-        public async Task<Response<CategoryDto>> GetByIdAsync(int id)
+        public async Task<Response<CategoryDto>> CreateAsync(CategoryCreateDto categoryCreateDto)
         {
-            var category = await _categoryCollection.Find(category => category.Id==id).FirstOrDefaultAsync();
-            if (category is null) return Response<CategoryDto>.Fail(StatusCodes.Status404NotFound,"Category not found");
+            var category = _mapper.Map<Category>(categoryCreateDto);
+            await _categoryCollection.InsertOneAsync(category);
             var dto = _mapper.Map<CategoryDto>(category);
-            return Response<CategoryDto>.Success(dto,StatusCodes.Status200OK);
-         }
-
+            return Response<CategoryDto>.Success(dto, StatusCodes.Status201Created);
+        }
     }
 }

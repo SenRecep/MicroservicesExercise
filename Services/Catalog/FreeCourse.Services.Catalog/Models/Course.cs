@@ -10,7 +10,7 @@ namespace FreeCourse.Services.Catalog.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        internal int Id { get; set; }
+        internal string Id { get; set; }
         internal string Name { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128)]

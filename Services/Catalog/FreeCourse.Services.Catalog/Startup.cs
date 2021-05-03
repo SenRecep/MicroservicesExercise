@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using FreeCourse.Services.Catalog.Managers;
+using FreeCourse.Services.Catalog.Services;
 using FreeCourse.Services.Catalog.Settings;
 
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +35,9 @@ namespace FreeCourse.Services.Catalog
 
             services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
             services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+            services.AddScoped<ICategoryService,CategoryManager>();
+            services.AddScoped<ICourseService,CourseManager>();
 
             services.AddSwaggerGen(c =>
             {

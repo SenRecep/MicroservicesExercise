@@ -6,7 +6,7 @@ namespace FreeCourse.Services.Catalog.Dtos
 {
     internal class CourseDto : IDto
     {
-        internal int Id { get; set; }
+        internal string Id { get; set; }
         internal string Name { get; set; }
 
         internal decimal Price { get; set; }
