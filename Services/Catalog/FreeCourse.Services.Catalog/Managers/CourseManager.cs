@@ -18,7 +18,7 @@ using MongoDB.Driver;
 
 namespace FreeCourse.Services.Catalog.Managers
 {
-    internal class CourseManager : ICourseService
+    public class CourseManager : ICourseService
     {
         private readonly IMapper _mapper;
         private readonly IDatabaseSettings _databaseSettings;

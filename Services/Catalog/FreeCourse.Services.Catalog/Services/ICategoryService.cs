@@ -6,7 +6,7 @@ using FreeCourse.Shared.ServicesLib.Dtos;
 
 namespace FreeCourse.Services.Catalog.Services
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
         public Task<Response<IEnumerable<CategoryDto>>> GetAllAsync();
         public Task<Response<CategoryDto>> GetByIdAsync(string id);

@@ -16,12 +16,12 @@ using MongoDB.Driver;
 
 namespace FreeCourse.Services.Catalog.Managers
 {
-    internal class CategoryManager : ICategoryService
+    public class CategoryManager : ICategoryService
     {
         private readonly IMongoCollection<Category> _categoryCollection;
         private readonly IMapper _mapper;
         private readonly IDatabaseSettings _databaseSettings;
-        internal CategoryManager(IMapper mapper, IDatabaseSettings databaseSettings)
+        public CategoryManager(IMapper mapper, IDatabaseSettings databaseSettings)
         {
             _mapper = mapper;
             _databaseSettings = databaseSettings;

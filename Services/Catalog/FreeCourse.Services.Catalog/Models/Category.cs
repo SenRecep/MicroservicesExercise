@@ -5,11 +5,11 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FreeCourse.Services.Catalog.Models
 {
-    internal class Category:IModel
+    public class Category:IModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        internal string Id { get; set; }
-        internal string Name { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }

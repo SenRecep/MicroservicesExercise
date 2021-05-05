@@ -3,24 +3,24 @@ using FreeCourse.Shared.ServicesLib.Core;
 
 namespace FreeCourse.Services.Catalog.Dtos
 {
-    internal class CourseUpdateDto:IDto
+    public class CourseUpdateDto:IDto
     {
-        internal string Id { get; set; }
+        public string Id { get; set; }
 
-        internal string Name { get; set; }
+        public string Name { get; set; }
 
-        internal decimal Price { get; set; }
-
-
-        internal string Description { get; set; }
-
-        internal string Picture { get; set; }
-
-        internal string UserId { get; set; }
+        public decimal Price { get; set; }
 
 
-        internal FeatureDto Feature { get; set; }
+        public string Description { get; set; }
 
-        internal string CategoryId { get; set; }
+        public string Picture { get; set; }
+
+        public string UserId { get; set; }
+
+
+        public FeatureDto Feature { get; set; }
+
+        public string CategoryId { get; set; }
     }
 }

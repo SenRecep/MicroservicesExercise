@@ -3,23 +3,23 @@ using FreeCourse.Shared.ServicesLib.Core;
 
 namespace FreeCourse.Services.Catalog.Dtos
 {
-    internal class CourseCreateDto : IDto
+    public class CourseCreateDto : IDto
     {
-        internal string Name { get; set; }
+        public string Name { get; set; }
 
-        internal decimal Price { get; set; }
-
-
-        internal string Description { get; set; }
-        internal string Picture { get; set; }
+        public decimal Price { get; set; }
 
 
-        internal string UserId { get; set; }
+        public string Description { get; set; }
+        public string Picture { get; set; }
 
 
-        internal FeatureDto Feature { get; set; }
+        public string UserId { get; set; }
 
-        internal string CategoryId { get; set; }
+
+        public FeatureDto Feature { get; set; }
+
+        public string CategoryId { get; set; }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 using System.Threading.Tasks;
 
+using FreeCourse.Services.Catalog.Dtos;
 using FreeCourse.Services.Catalog.Services;
 using FreeCourse.Shared.ServicesLib.ControllerBases;
 
@@ -8,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FreeCourse.Services.Catalog.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
-    internal class CoursesController : CustomBaseController
+    public class CoursesController : CustomBaseController
     {
         private readonly ICourseService courseService;
 
@@ -25,10 +26,40 @@ namespace FreeCourse.Services.Catalog.Controllers
             var response = await courseService.GetByIdAsync(id);
             return CreateIActionResultInstance(response);
         }
-        [HttpGet("{userId}")]
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var response = await courseService.GetAllAsync();
+            return CreateIActionResultInstance(response);
+        }
+
+        [Route("/api/[controller]/[action]/{userId}")]
+        [HttpGet]
         public async Task<IActionResult> GetAllByUserId(string userId)
         {
             var response = await courseService.GetAllByUserIdAsync(userId);
+            return CreateIActionResultInstance(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CourseCreateDto courseCreateDto)
+        {
+            var response = await courseService.CreateAsync(courseCreateDto);
+            return CreateIActionResultInstance(response);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(CourseUpdateDto courseUpdateDto)
+        {
+            var response = await courseService.UpdateAsync(courseUpdateDto);
+            return CreateIActionResultInstance(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var response = await courseService.DeleteAsync(id);
             return CreateIActionResultInstance(response);
         }
     }
